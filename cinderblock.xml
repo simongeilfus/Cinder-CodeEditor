@@ -5,7 +5,7 @@
 	id="Cinder-CodeEditor"
 	author="Simon Geilfus"
 	license="GPL, Commercial"
-	summary="In-App Full-Feature Code Editor."
+	summary="In-App Full-Featured Code Editor."
 	url="https://github.com/simongeilfus/Cinder-CodeEditor"
 	git="git://github.com/simongeilfus/Cinder-CodeEditor.git"
 	>
