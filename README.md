@@ -1,18 +1,19 @@
 Cinder-CodeEditor
 ================
 
-Full-Featured Code Editor for Cinder
+Full-Featured Code Editor for Cinder.
+(Based on Awesomium and CodeMirror).
 
 #####Features:
-* Supported Languages: Glsl (XML, JSon and Lua are coming...)
-* Syntax Highlighting
-* Code Completion
-* Search / Replace
-* In-Editor Error messages
-* Code Changed callback system
-* Multi-Window support
-* Auto-Save
-* Support c++11 Lambdas and Intializer Lists
+* Supported Languages: Glsl (XML, JSon and Lua are coming...).
+* Syntax Highlighting.
+* Code Completion.
+* Search / Replace.
+* In-Editor Error messages.
+* Code Changed callback system.
+* Multi-Window support.
+* Auto-Save.
+* Support c++11 Lambdas and Intializer Lists.
 
 #####Block Depedencies
 To use this block you will need:
@@ -138,7 +139,7 @@ Toggle editor visibility
 Switch tab
 
 #####Licence
-The editor itself is based on the excellent https://github.com/marijnh/CodeMirror. Please refer to CodeMirror for any questions or licence issues.
+The editor itself is based on the excellent [CodeMirror](https://github.com/marijnh/CodeMirror). Please refer to CodeMirror for any questions or licence issues.
 
 Copyright (c) 2013, Simon Geilfus - All rights reserved.
 This code is intended for use with the Cinder C++ library: http://libcinder.org
