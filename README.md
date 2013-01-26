@@ -5,12 +5,15 @@ Full-Featured Code Editor for Cinder
 
 #####Block Depedencies
 To use this block you will need the appRewrite branch of Cinder:
+
 https://forum.libcinder.org/#Topic/23286000001389463
 
 And Paul Houx's Cinder-Awesomium block:
-https://github.com/paulhoux/Cinder-Awesomium.git blocks/Awesomium
+
+https://github.com/paulhoux/Cinder-Awesomium
 
 Some samples depends on my LiveAssetManager block as well, but you don't need it to use the block:
+
 https://github.com/simongeilfus/Cinder-LiveAssetManager
 
 #####Getting Started
