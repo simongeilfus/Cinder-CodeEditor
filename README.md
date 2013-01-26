@@ -98,6 +98,19 @@ mCodeEditor->registerCodeChanged( "simple.frag", [this](const string& frag) {
     } );
 ```
 
+You might want to remove focus from the editor `CodeEditor::blur` when using `keyDown` in your main app:
+
+```c
+void MyApp::keyDown( KeyEvent event )
+{
+    if( event.isAccelDown() && event.getCode() == KeyEvent::KEY_RETURN ){
+        mCodeEditor->blur();
+        setFullScreen( !isFullScreen() );
+    }
+}
+```
+
+
 #####Edited Files
 You don't need to make sure the files already exists, if they don't the editor will take care of creating folders or files. This makes prototyping much more easy.
 
