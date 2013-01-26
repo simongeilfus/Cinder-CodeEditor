@@ -1,0 +1,71 @@
+
+.CodeMirror {
+	font-size: 11px;
+	height: auto;
+}
+.CodeMirror-scroll {
+	height: 100%; 
+	margin: 20px 16px 16px 16px;
+	overflow-y: hidden;
+	overflow-x: auto;
+	opacity: 0.9999999;
+	background-color: rgba( 255, 255, 255, 0.45 );
+}
+body {
+	padding: 0;
+	margin: 0;
+	/*background-color: transparent;*/
+	background-color: rgba( 255, 255, 255, 0 );
+}
+
+.cm-s-elegant span.cm-number, .cm-s-elegant span.cm-string, .cm-s-elegant span.cm-atom {color: #111;}
+.cm-s-elegant span.cm-comment {color: #262; font-style: italic; line-height: 1em;}
+.cm-s-elegant span.cm-meta {color: #555; font-style: italic; line-height: 1em;}
+.cm-s-elegant span.cm-variable {color: black;}
+.cm-s-elegant span.cm-variable-2 {color: #b11;}
+.cm-s-elegant span.cm-qualifier {color: #555;}
+.cm-s-elegant span.cm-keyword {color: #730;}
+.cm-s-elegant span.cm-builtin {color: #30a;}
+.cm-s-elegant span.cm-error {background-color: #fdd;}
+.cm-s-elegant span.cm-link {color: #762;}
+
+.cm-s-elegant {
+  line-height: 1.45em;
+  font-family: Menlo,Monaco,"Andale Mono","lucida console","Courier New",monospace !important;
+  color-profile: sRGB;
+  rendering-intent: auto;
+}
+
+ .lint-error {font-family: arial; font-size: 90%; background: rgba( 255, 255, 255, 0.25 ); color: #a00; padding: 2px 5px 3px; }
+ .lint-error-icon {color: white; background-color: red; font-weight: bold; border-radius: 80%; padding: 0 3px; margin-right: 7px;}
+
+.cm-s-elegant .CodeMirror-focused .CodeMirror-selected {
+  background: rgba( 50, 50, 50, 0.25 );
+  color: inherit;
+}
+
+.cm-s-elegant ::selection {
+  background: rgba( 50, 50, 50, 0.25 );
+  color: inherit;
+}
+
+.cm-s-elegant .CodeMirror-selected {
+  background: rgba( 50, 50, 50, 0.25 );
+}
+
+.cm-s-elegant .CodeMirror-gutters {
+  background-color: rgba( 0, 0, 0, 0.05 );
+  border-color: rgba( 0, 0, 0, 0.05 );
+}
+
+.cm-s-elegant .CodeMirror-linenumber {
+  font-size: 9px;
+}
+
+.activeline {
+	background: rgba( 255, 255, 255, 0.15 ) !important;
+}
+
+span.CodeMirror-matchhighlight { 
+  background: rgba( 50, 50, 50, 0.15 );
+}

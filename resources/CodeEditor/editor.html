@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>CodeEditor</title>
+    <link rel="stylesheet" href="css/codemirror.css">
+    <link rel="stylesheet" href="css/elegant.css">
+    <link rel="stylesheet" href="css/dialog.css">
+    <script src="js/codemirror.js"></script>
+    <script src="js/glsl.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/searchcursor.js"></script>
+    <script src="js/dialog.js"></script>
+    <script src="js/match-highlighter.js"></script>
+
+    <script src="js/show-hint.js"></script>
+    <script src="js/glsl-hint.js"></script>
+    <link rel="stylesheet" href="css/show-hint.css">
+    
+    <link rel="stylesheet" href="css/jquery-ui.css" />
+    <script src="js/jquery-1.8.3.js"></script>
+    <script src="js/jquery-ui.js"></script>
+  </head>
+  <body>
+    <form><textarea id="code" name="code"></textarea></form>
+
+    <script>
+      
+      var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+        theme: "elegant",
+        indentWithTabs: true,
+        matchBrackets: true,
+        mode: "text/x-glsl"
+      });
+
+      var hlLine = editor.addLineClass(0, "background", "activeline");
+
+      editor.on("cursorActivity", function() {
+        editor.matchHighlight("CodeMirror-matchhighlight");
+        var cur = editor.getLineHandle(editor.getCursor().line);
+        if (cur != hlLine) {
+          editor.removeLineClass(hlLine, "background", "activeline");
+          hlLine = editor.addLineClass(cur, "background", "activeline");
+        }
+      });
+
+
+      editor.on("change", function() {
+        if( typeof( changeCallback ) != "undefined") { 
+          changeCallback();
+        }
+      });
+
+      function autoComplete(){
+        CodeMirror.showHint( editor, CodeMirror.glslHint);
+      }
+
+      function setValue( value ){
+         editor.setValue( value );
+         editor.refresh();
+      }
+
+      function getValue(){
+        return editor.getValue();
+      }
+
+      var closeDialog = null;
+      function setTitleDialog( message ){
+        if( closeDialog != null )
+          closeDialog();
+        
+        if( editor.openDialog ) closeDialog = editor.openDialog(message);
+      }
+      function clearTitleDialog(){
+        if( closeDialog != null )
+          closeDialog();
+        closeDialog = null;
+      }
+
+      function enableLineWrapping( enabled ){
+        editor.setOption( "lineWrapping", enabled );
+      }
+
+      function enableLineNumbers( enabled ){
+        editor.setOption( "lineNumbers", enabled );
+      }
+
+      var errorWidgets = [];
+      function setError( line, message ){
+
+        var msg = document.createElement("div");
+        var icon = msg.appendChild(document.createElement("span"));
+        icon.innerHTML = "!";
+        icon.className = "lint-error-icon";
+        msg.appendChild(document.createTextNode(message));
+        msg.className = "lint-error";
+
+        errorWidgets.push(editor.addLineWidget(editor.lineCount()-1, msg, {coverGutter: false, noHScroll: false}));
+      }
+      function clearErrors(){
+        for (var i = 0; i < errorWidgets.length; ++i)
+          editor.removeLineWidget( errorWidgets[i] );
+      }
+
+      function blur(){
+        editor.getInputField().blur()
+      }
+
+    </script>
+
+  </body>
+</html>

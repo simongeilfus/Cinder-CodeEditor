@@ -1,0 +1,61 @@
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Blocks">
+      <UniqueIdentifier>{AE98A180-9C01-46AB-B7DA-929C487BE5CE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\Awesomium">
+      <UniqueIdentifier>{64E36C0D-BA4A-4CF4-B492-ADA7C241B717}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\Awesomium\include">
+      <UniqueIdentifier>{85AD7B1A-2658-4807-AA03-5C38F0525253}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\CodeEditor">
+      <UniqueIdentifier>{E385CADA-CE6B-45F2-8EDF-083889778525}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\CodeEditor\include">
+      <UniqueIdentifier>{0C639721-830D-4C2B-AFAF-0BAA2B290B91}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\BasicEditorApp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\BasicEditorApp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClInclude Include="..\include\Resources.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Cinder-Awesomium\include\CinderAwesomium.h">
+      <Filter>Blocks\Awesomium\include</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\..\include\CodeEditor.cpp">
+      <Filter>Blocks\CodeEditor\include</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\..\include\CodeEditor.h">
+      <Filter>Blocks\CodeEditor\include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\Resources.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resources.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
