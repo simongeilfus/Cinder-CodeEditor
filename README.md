@@ -112,7 +112,7 @@ void MyApp::keyDown( KeyEvent event )
 ```
 
 
-#####Edited Files
+#####Note on Files
 You don't need to make sure the files already exists, if they don't the editor will take care of creating folders or files. This makes prototyping much more easy.
 
 The editor supports drag'n'drop as well.
@@ -138,8 +138,13 @@ Toggle editor visibility
 * `Shift+Tab`
 Switch tab
 
-#####Licence
+
+#####CodeMirror
+
 The editor itself is based on the excellent [CodeMirror](https://github.com/marijnh/CodeMirror). See license [here](https://github.com/simongeilfus/Cinder-CodeEditor/blob/master/CM-LICENSE).
+
+
+#####Licence
 
 Copyright (c) 2013, Simon Geilfus - All rights reserved.
 This code is intended for use with the Cinder C++ library: http://libcinder.org
