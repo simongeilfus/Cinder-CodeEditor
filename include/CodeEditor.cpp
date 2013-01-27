@@ -155,7 +155,7 @@ void CodeEditor::initAwesomium()
     
     std::string editorPath = ( app::getAppPath() / "Contents/MacOS/CodeEditor/editor.html" ).string();
 #else
-    std::string editorPath = ( app::getAppPath() / "editor.html" ).string();    
+    std::string editorPath = ( app::getAppPath() / "editor_msw.html" ).string();    
 #endif
     
 	// initialize the Awesomium web engine
