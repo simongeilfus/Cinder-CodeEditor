@@ -121,22 +121,16 @@ There's an Auto-Save feature that you can set in your settings, if you want your
 
 #####Editor Shortcuts
 
-* `Ctrl-F / Cmd-F`
-Start searching
-* `Ctrl-G / Cmd-G`
-Find next
-* `Shift-Ctrl-G / Shift-Cmd-G`
-Find previous
-* `Shift-Ctrl-F / Cmd-Option-F`
-Replace
-* `Shift-Ctrl-R / Shift-Cmd-Option-F`
-Replace all
-* `Cmd-S`
-Save
-* `~`
-Toggle editor visibility
-* `Shift+Tab`
-Switch tab
+`` | ``
+----|------
+`Ctrl-F / Cmd-F` | Start searching
+`Ctrl-G / Cmd-G` | Find next
+`Shift-Ctrl-G / Shift-Cmd-G`        | Find previous
+`Shift-Ctrl-F / Cmd-Option-F`       | Replace
+`Shift-Ctrl-R / Shift-Cmd-Option-F` | Replace all
+`Cmd-S`                             | Save
+`~` | Toggle editor visibility
+`Shift+Tab` | Switch tab
 
 
 #####CodeMirror
