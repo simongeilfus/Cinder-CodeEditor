@@ -4,6 +4,14 @@
 
 #include "CodeEditor.h"
 
+// VisualStudio does'nt seem to support initializer_list
+// yet so let's use boost::assign::list_of instead
+#if defined( CINDER_MSW )
+#include "boost/assign/list_of.hpp"
+using namespace boost::assign;
+#endif
+
+
 using namespace ci;
 using namespace ci::app;
 using namespace std;
@@ -29,7 +37,11 @@ void MultiWindowApp::setup()
     getWindowIndex(0)->connectDraw( &MultiWindowApp::drawMain, this );
     
     // Create CodeEditor
-    mCodeEditor = CodeEditor::create( { "SphereShader.vert", "SphereShader.frag" }, CodeEditor::Settings().lineNumbers().autoSave().window( editorWindow ) );
+#if defined( CINDER_MSW )
+    mCodeEditor = CodeEditor::create( list_of<string>( "SphereShader.vert" )( "SphereShader.frag"), CodeEditor::Settings().lineNumbers().autoSave() );
+#else
+    mCodeEditor = CodeEditor::create( { "SphereShader.vert", "SphereShader.frag" }, CodeEditor::Settings().lineNumbers().autoSave() );
+#endif
     
     mCodeEditor->registerCodeChanged( "SphereShader.vert", "SphereShader.frag", [this](const string& vert,const string& frag) {
         try {

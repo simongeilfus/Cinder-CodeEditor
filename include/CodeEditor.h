@@ -63,7 +63,11 @@ public:
     };
     
     static CodeEditorRef create( const ci::fs::path& filePath, Settings settings = Settings() );
+#if defined( CINDER_MAC )
     static CodeEditorRef create( std::initializer_list<ci::fs::path> filePaths, Settings settings = Settings() );
+#else
+    static CodeEditorRef create( std::vector<ci::fs::path> filePaths, Settings settings = Settings() );
+#endif
     
     void write( const ci::fs::path& filePath );
     void read( const ci::fs::path& filePath );
@@ -108,7 +112,11 @@ public:
 protected:
     
     CodeEditor( const ci::fs::path& filePath, Settings settings = Settings() );
+#if defined( CINDER_MAC )
     CodeEditor( std::initializer_list<ci::fs::path> filePaths, Settings settings = Settings() );
+#else
+    CodeEditor( std::vector<ci::fs::path> filePaths, Settings settings = Settings() );
+#endif
     
     void setup();
     void connectWindow( ci::app::WindowRef window );

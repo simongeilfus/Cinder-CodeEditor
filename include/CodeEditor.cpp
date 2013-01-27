@@ -14,14 +14,22 @@ using namespace std;
 using namespace ci;
 
 
-CodeEditorRef CodeEditor::create( const ci::fs::path& filePath, Settings settings )
+CodeEditorRef CodeEditor::create( const ci::fs::path& filePath, CodeEditor::Settings settings )
 {
     return CodeEditorRef( new CodeEditor( filePath, settings ) );
 }
-CodeEditorRef CodeEditor::create( std::initializer_list<ci::fs::path> filePaths, Settings settings )
+
+#if defined( CINDER_MAC )
+CodeEditorRef CodeEditor::create( std::initializer_list<ci::fs::path> filePaths, CodeEditor::Settings settings )
 {
     return CodeEditorRef( new CodeEditor( filePaths, settings ) );
 }
+#else
+CodeEditorRef CodeEditor::create( std::vector<ci::fs::path> filePaths, CodeEditor::Settings settings )
+{
+    return CodeEditorRef( new CodeEditor( filePaths, settings ) );
+}
+#endif
 
 
 CodeEditor::CodeEditor( const ci::fs::path& filePath, Settings settings )
@@ -48,6 +56,7 @@ CodeEditor::CodeEditor( const ci::fs::path& filePath, Settings settings )
 }
 
 
+#if defined( CINDER_MAC )
 CodeEditor::CodeEditor( std::initializer_list<ci::fs::path> filePaths, Settings settings )
 : mSettings( settings ), mVisible( true ), mTabsReady( 0 )
 {
@@ -75,6 +84,35 @@ CodeEditor::CodeEditor( std::initializer_list<ci::fs::path> filePaths, Settings 
     if( mSettings.getWindow() )
         connectWindow( mSettings.getWindow() );
 }
+#else
+CodeEditor::CodeEditor( std::vector<ci::fs::path> filePaths, Settings settings )
+: mSettings( settings ), mVisible( true ), mTabsReady( 0 )
+{
+    for_each( filePaths.begin(), filePaths.end(), [this](fs::path path) {
+        fs::path p = app::getAssetPath("") / path;
+        
+        if( !fs::exists( p ) ){
+            if( !fs::exists( p.parent_path() ) )
+                fs::create_directory( p.parent_path() );
+            std::ofstream oStream( ( p ).c_str() );
+            oStream.close();
+        }
+        
+        TabRef tab = TabRef( new Tab( this ) );
+        tab->mFileName = path;
+        tab->mFilePath = p;
+        mTabs.push_back( tab );
+        
+    } );
+    
+    if( mTabs.size() )
+        mCurrentTab = mTabs[0];
+    
+    initAwesomium();
+    if( mSettings.getWindow() )
+        connectWindow( mSettings.getWindow() );
+}
+#endif
 
 
 void CodeEditor::setup()
@@ -115,7 +153,9 @@ void CodeEditor::initAwesomium()
 	cnf.package_path = Awesomium::WebString::CreateFromUTF8( frameworkPath.c_str(), frameworkPath.size() );
 	cnf.log_path = Awesomium::WebString::CreateFromUTF8( frameworkPath.c_str(), frameworkPath.size() );
     
-    std::string editorPath = ( app::getAppPath() / "Contents" / "MacOS" / "CodeEditor/editor.html" ).string();
+    std::string editorPath = ( app::getAppPath() / "Contents/MacOS/CodeEditor/editor.html" ).string();
+#else
+    std::string editorPath = ( app::getAppPath() / "editor.html" ).string();    
 #endif
     
 	// initialize the Awesomium web engine
