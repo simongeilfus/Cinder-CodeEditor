@@ -29,7 +29,7 @@ void MultipleFilesApp::setup()
 {
     // Create CodeEditor
 #if defined( CINDER_MSW )
-    mCodeEditor = CodeEditor::create( list_of<string>( "SphereShader.vert" )( "SphereShader.frag"), CodeEditor::Settings().lineNumbers().autoSave() );
+	mCodeEditor = CodeEditor::create( list_of<string>( "SphereShader.vert" )( "SphereShader.frag").convert_to_container<vector<fs::path>>(), CodeEditor::Settings().lineNumbers().autoSave() );
 #else
     mCodeEditor = CodeEditor::create( { "SphereShader.vert", "SphereShader.frag" }, CodeEditor::Settings().lineNumbers().autoSave() );
 #endif
