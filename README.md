@@ -139,7 +139,7 @@ Toggle editor visibility
 Switch tab
 
 #####Licence
-The editor itself is based on the excellent [CodeMirror](https://github.com/marijnh/CodeMirror). Please refer to CodeMirror for any questions or licence issues.
+The editor itself is based on the excellent [CodeMirror](https://github.com/marijnh/CodeMirror). See license [here](https://github.com/simongeilfus/Cinder-CodeEditor/blob/master/CM-LICENSE).
 
 Copyright (c) 2013, Simon Geilfus - All rights reserved.
 This code is intended for use with the Cinder C++ library: http://libcinder.org
