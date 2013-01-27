@@ -318,7 +318,7 @@ void CodeEditor::keyDown( ci::app::KeyEvent event )
         ( (Awesomium::BitmapSurface*) mCurrentTab->mWebView->surface() )->set_is_dirty( true );
                 
         Awesomium::JSArray args;
-        args.Push( Awesomium::JSValue( Awesomium::WSLit( mCurrentTab->mFileName.c_str() ) ) );
+        args.Push( Awesomium::JSValue( Awesomium::WSLit( mCurrentTab->mFileName.string().c_str() ) ) );
         
         Awesomium::JSObject& window = mCurrentTab->mJSWindow;
         window.Invoke( Awesomium::WSLit("setTitleDialog"), args );
