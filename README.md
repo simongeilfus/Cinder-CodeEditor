@@ -132,6 +132,7 @@ There's an Auto-Save feature that you can set in your settings, if you want your
 `Shift-Ctrl-G / Shift-Cmd-G`        | Find previous
 `Shift-Ctrl-F / Cmd-Option-F`       | Replace
 `Shift-Ctrl-R / Shift-Cmd-Option-F` | Replace all
+`Cmd-T`                             | Switch betweem light and dark theme
 
 
 #####CodeMirror
