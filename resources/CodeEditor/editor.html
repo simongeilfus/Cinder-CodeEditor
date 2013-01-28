@@ -4,8 +4,10 @@
     <meta charset="utf-8">
     <title>CodeEditor</title>
     <link rel="stylesheet" href="css/codemirror.css">
-    <link rel="stylesheet" href="css/elegant.css">
+    <link rel="stylesheet" href="css/solarized.css">
     <link rel="stylesheet" href="css/dialog.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.color.js"></script>
     <script src="js/codemirror.js"></script>
     <script src="js/glsl.js"></script>
     <script src="js/search.js"></script>
@@ -22,12 +24,18 @@
     <script>
       
       var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-        theme: "elegant",
+        theme: "solarized light",
         indentWithTabs: true,
         matchBrackets: true,
         mode: "text/x-glsl"
       });
 
+      var wrapper = $(editor.getWrapperElement());
+      var scroller = $(editor.getScrollerElement());
+console.log( editor );
+      wrapper.css( { "text-shadow" : "none" } );
+      wrapper.css( { "opacity" : "0.9999" } );
+      
       var hlLine = editor.addLineClass(0, "background", "activeline");
 
       editor.on("cursorActivity", function() {
@@ -38,7 +46,6 @@
           hlLine = editor.addLineClass(cur, "background", "activeline");
         }
       });
-
 
       editor.on("change", function() {
         if( typeof( changeCallback ) != "undefined") { 
@@ -57,6 +64,21 @@
 
       function getValue(){
         return editor.getValue();
+      }
+
+      function setOpacity( opacity ){
+        wrapper.css( {'background-color': '' } );
+        
+        var c = jQuery.Color( wrapper.css('backgroundColor') );
+        var colorTo = "rgba("+c.red()+","+c.green()+","+c.blue()+","+opacity+")";
+
+        wrapper.css( {'background-color': colorTo } );
+      }
+      function setFontSize( size ){
+        wrapper.css( {'font-size': size+"px" } );
+      }
+      function setTheme( name ){
+        editor.setOption( "theme", "solarized " + name );
       }
 
       var closeDialog = null;

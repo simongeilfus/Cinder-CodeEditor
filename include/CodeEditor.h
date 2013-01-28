@@ -27,7 +27,7 @@ public:
     struct Settings {
     public:
         Settings()
-        : mCodeCompletionEnabled( true ), mLineWrappingEnabled( true ), mLineNumbersEnabled( false ), mAutoSaveEnabled( false ), mWindow( ci::app::getWindow() )
+        : mCodeCompletionEnabled( true ), mLineWrappingEnabled( true ), mLineNumbersEnabled( false ), mAutoSaveEnabled( false ), mWindow( ci::app::getWindow() ), mPostDrawConnection( true ),mUpdateConnection( true ), mOpacity( 0.6 ), mFontSize( 11 ), mTheme( "light" )
         {}
         
         bool isCodeCompletionEnabled(){ return mCodeCompletionEnabled; }
@@ -53,16 +53,43 @@ public:
         ci::app::WindowRef getWindow(){ return mWindow; }
         void setWindow( ci::app::WindowRef window ){ mWindow = window; }
         Settings& window( ci::app::WindowRef window ){ setWindow( window ); return *this; }
-    
+        
+        bool isPostDrawConnectionEnabled(){ return mPostDrawConnection; }
+        void enablePostDrawConnection( bool enabled = true ){ mPostDrawConnection = enabled; }
+        void disablePostDrawConnection(){ mPostDrawConnection = false; }
+        Settings& postDrawConnection( bool enabled = true ){ enablePostDrawConnection( enabled ); return *this; }
+                
+        bool isUpdateConnectionEnabled(){ return mUpdateConnection; }
+        void enableUpdateConnection( bool enabled = true ){ mUpdateConnection = enabled; }
+        void disableUpdateConnection(){ mUpdateConnection = false; }
+        Settings& updateConnection( bool enabled = true ){ enableUpdateConnection( enabled ); return *this; }
+        
+        float getOpacity(){ return mOpacity; }
+        void setOpacity( float alpha ){ mOpacity = alpha; }
+        Settings& opacity( float alpha ){ setOpacity( alpha ); return *this; }
+        
+        int getFontSize(){ return mFontSize; }
+        void setFontSize( int size ){ mFontSize = size; }
+        Settings& fontSize( int size ){ setFontSize( size ); return *this; }
+        
+        std::string getTheme(){ return mTheme; }
+        void setTheme( const std::string& name ){ mTheme = name; }
+        Settings& theme( const std::string& name ){ setTheme( name ); return *this; }
+        
     private:
         bool                mCodeCompletionEnabled;
         bool                mLineWrappingEnabled;
         bool                mLineNumbersEnabled;
         bool                mAutoSaveEnabled;
+        bool                mPostDrawConnection;
+        bool                mUpdateConnection;
+        float               mOpacity;
+        int                 mFontSize;
+        std::string         mTheme;
         ci::app::WindowRef  mWindow;
     };
     
-    static CodeEditorRef create( const ci::fs::path& filePath, Settings settings = Settings() );
+    static CodeEditorRef create( const ci::fs::path& filePath = "", Settings settings = Settings() );
 #if defined( CINDER_MAC )
     static CodeEditorRef create( std::initializer_list<ci::fs::path> filePaths, Settings settings = Settings() );
 #else
@@ -102,6 +129,10 @@ public:
     
     void enableLineWrapping( bool enabled = true );
     void enableLineNumbers( bool enabled = true );
+    
+    void setOpacity( float alpha );
+    void setFontSize( int size );
+    void setTheme( const std::string& name );
     
     void setError( /*uint16_t line, */const std::string &message );
     void clearErrors();

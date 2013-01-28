@@ -1,12 +1,12 @@
 .CodeMirror-dialog {
   position: absolute;
   left: 0; right: 0;
-  background: rgba( 255, 255, 255, 0.65 );
+  background: rgba( 255, 255, 255, 1 );
   z-index: 15;
   padding: .1em .8em;
   overflow: hidden;
   color: #333;
-  margin: 0px 16px 0px 16px;
+  
   opacity: 0.9999999;
 }
 

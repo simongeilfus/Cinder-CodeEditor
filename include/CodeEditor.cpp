@@ -36,19 +36,36 @@ CodeEditor::CodeEditor( const ci::fs::path& filePath, Settings settings )
 : mSettings( settings ), mVisible( true ), mTabsReady( 0 )
 {
     fs::path p = app::getAssetPath("") / filePath;
-    if( !fs::exists( p ) ){
+    
+    if( fs::exists( p ) && fs::is_directory( p ) ){
+        fs::directory_iterator end;
+        for( fs::directory_iterator it( p ) ; it != end ; ++it ){
+            fs::path ext = it->path().extension();
+            if( ext == ".frag" || ext == ".vert" || ext == ".glsl" ){
+                TabRef tab = TabRef( new Tab( this ) );
+                tab->mFileName = it->path().filename();
+                tab->mFilePath = it->path();
+                mTabs.push_back( tab );
+            }
+        }
+        
+        if( mTabs.size() )
+            mCurrentTab = mTabs[0];
+    }
+    else if( fs::exists( p ) ){
+        TabRef tab = TabRef( new Tab( this ) );
+        tab->mFileName = filePath;
+        tab->mFilePath = p;
+        mTabs.push_back( tab );
+        
+        mCurrentTab = tab;
+    }
+    else if( !fs::exists( p ) ){
         if( !fs::exists( p.parent_path() ) )
             fs::create_directory( p.parent_path() );
         std::ofstream oStream( ( p ).c_str() );
         oStream.close();
     }
-    
-    TabRef tab = TabRef( new Tab( this ) );
-    tab->mFileName = filePath;
-    tab->mFilePath = p;
-    mTabs.push_back( tab );
-    
-    mCurrentTab = tab;
     
     initAwesomium();
     if( mSettings.getWindow() )
@@ -119,13 +136,19 @@ void CodeEditor::setup()
 {    
     if( mSettings.isLineWrappingEnabled() ) enableLineWrapping();
     if( mSettings.isLineNumbersEnabled() ) enableLineNumbers();
+    setFontSize( mSettings.getFontSize() );
+    setTheme( mSettings.getTheme() );
+    setOpacity( mSettings.getOpacity() );
 }
 void CodeEditor::connectWindow( app::WindowRef window )
 {
-    app::App::get()->getSignalUpdate().connect( std::bind( &CodeEditor::update, this ) );
+    if( mSettings.isUpdateConnectionEnabled() )
+        app::App::get()->getSignalUpdate().connect( std::bind( &CodeEditor::update, this ) );
+
     app::App::get()->getSignalShutdown().connect( std::bind( &CodeEditor::shutdown, this ) );
     
-    window->getSignalPostDraw().connect( std::bind( &CodeEditor::draw, this ) );
+    if( mSettings.isPostDrawConnectionEnabled() )
+        window->getSignalPostDraw().connect( std::bind( &CodeEditor::draw, this ) );
     
     window->connectKeyDown( &CodeEditor::keyDown, this );
     window->connectKeyUp( &CodeEditor::keyUp, this );
@@ -170,7 +193,7 @@ void CodeEditor::initAwesomium()
         webView->LoadURL( Awesomium::WebURL( Awesomium::WSLit( ( "file://" + editorPath ).c_str() ) ) );
         
         webView->SetTransparent( true );
-        webView->Focus();
+        //webView->Focus();
         
         // set load listener to execute javascript
         webView->set_load_listener( tab.get() );
@@ -314,7 +337,7 @@ void CodeEditor::keyDown( ci::app::KeyEvent event )
         }
         if( it == mTabs.end() ) it = mTabs.begin();
         mCurrentTab = *it;
-        mCurrentTab->mWebView->Focus();
+        //mCurrentTab->mWebView->Focus();
         ( (Awesomium::BitmapSurface*) mCurrentTab->mWebView->surface() )->set_is_dirty( true );
                 
         Awesomium::JSArray args;
@@ -327,6 +350,13 @@ void CodeEditor::keyDown( ci::app::KeyEvent event )
         }, app::timeline().getCurrentTime() + 1.0f );
     }
     
+    // Switch Theme
+    
+    else if( event.isAccelDown() && event.getCode() == ci::app::KeyEvent::KEY_t ){
+        if( mSettings.getTheme() == "light" )
+            setTheme( "dark" );
+        else setTheme( "light" );
+    }
     // Other keys
     else {
         ph::awesomium::handleKeyDown( mCurrentTab->mWebView.get(), event );
@@ -432,6 +462,38 @@ void CodeEditor::enableLineNumbers( bool enabled )
         TabRef tab = *it;
         tab->mJSWindow.Invoke( Awesomium::WSLit("enableLineNumbers"), args );
     }
+}
+
+void CodeEditor::setOpacity( float alpha )
+{
+    mSettings.setOpacity( alpha );
+    Awesomium::JSArray args;
+    args.Push( Awesomium::JSValue( alpha ) );
+    for( vector<TabRef>::iterator it = mTabs.begin(); it != mTabs.end(); ++it ){
+        TabRef tab = *it;
+        tab->mJSWindow.Invoke( Awesomium::WSLit("setOpacity"), args );
+    }
+}
+void CodeEditor::setFontSize( int size )
+{
+    mSettings.setFontSize( size );
+    Awesomium::JSArray args;
+    args.Push( Awesomium::JSValue( size ) );
+    for( vector<TabRef>::iterator it = mTabs.begin(); it != mTabs.end(); ++it ){
+        TabRef tab = *it;
+        tab->mJSWindow.Invoke( Awesomium::WSLit("setFontSize"), args );
+    }
+}
+void CodeEditor::setTheme( const std::string& name )
+{
+    mSettings.setTheme( name );
+    Awesomium::JSArray args;
+    args.Push( Awesomium::JSValue( Awesomium::WSLit( name.c_str() ) ) );
+    for( vector<TabRef>::iterator it = mTabs.begin(); it != mTabs.end(); ++it ){
+        TabRef tab = *it;
+        tab->mJSWindow.Invoke( Awesomium::WSLit("setTheme"), args );
+    }
+    setOpacity( mSettings.getOpacity() );
 }
 
 bool CodeEditor::hasFocus()

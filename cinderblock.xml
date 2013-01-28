@@ -35,6 +35,8 @@
 		<buildCopy>resources/CodeEditor/js/search.js</buildCopy>
 		<buildCopy>resources/CodeEditor/js/searchcursor.js</buildCopy>
 		<buildCopy>resources/CodeEditor/js/show-hint.js</buildCopy>
+		<buildCopy>resources/CodeEditor/js/jquery.min.js</buildCopy>
+		<buildCopy>resources/CodeEditor/js/jquery.color.js</buildCopy>
 	</platform>
 	
 </block>
