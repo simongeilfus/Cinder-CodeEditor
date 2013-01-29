@@ -13,19 +13,19 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
     <Filter Include="Blocks">
-      <UniqueIdentifier>{D105E2F0-6E48-4741-99C0-FF022D238944}</UniqueIdentifier>
+      <UniqueIdentifier>{DB07A3C0-68B4-418A-86DB-FE2C60746DE2}</UniqueIdentifier>
     </Filter>
     <Filter Include="Blocks\Awesomium">
-      <UniqueIdentifier>{1A1683C2-B0AF-4DBA-8B3D-9453B2C5575C}</UniqueIdentifier>
+      <UniqueIdentifier>{F217377D-F8C5-47C3-AFE0-6D73E2C6FAA3}</UniqueIdentifier>
     </Filter>
     <Filter Include="Blocks\Awesomium\include">
-      <UniqueIdentifier>{7D40398D-9475-42C4-8F15-31FB870D1B9C}</UniqueIdentifier>
+      <UniqueIdentifier>{0BDA8507-737B-42D4-BA46-958E524E9CAB}</UniqueIdentifier>
     </Filter>
     <Filter Include="Blocks\CodeEditor">
-      <UniqueIdentifier>{016A1F58-AEAF-404D-A7D3-04A730AD1F52}</UniqueIdentifier>
+      <UniqueIdentifier>{BBD45668-8226-408F-8FAC-125623A31322}</UniqueIdentifier>
     </Filter>
     <Filter Include="Blocks\CodeEditor\include">
-      <UniqueIdentifier>{FD0AB508-1186-4D5D-A958-87CC8C8B5188}</UniqueIdentifier>
+      <UniqueIdentifier>{9B03AEDE-6538-48CC-8382-BF1FCF9091A7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

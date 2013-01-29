@@ -13,26 +13,26 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
     <Filter Include="Blocks">
-      <UniqueIdentifier>{9724D997-291F-45E9-B51C-3CCA0D40345A}</UniqueIdentifier>
+      <UniqueIdentifier>{CFAF4214-30D5-4AF4-9012-D5E1B8EEFD06}</UniqueIdentifier>
     </Filter>
     <Filter Include="Blocks\Awesomium">
-      <UniqueIdentifier>{84134609-6004-4A74-A98B-137A45718EA0}</UniqueIdentifier>
+      <UniqueIdentifier>{A9FC715D-A97F-4456-AB2B-739B6911AAFD}</UniqueIdentifier>
     </Filter>
     <Filter Include="Blocks\Awesomium\include">
-      <UniqueIdentifier>{DF20ED21-EACE-458D-AF7B-1FC2272D4214}</UniqueIdentifier>
+      <UniqueIdentifier>{B3358EA7-E3EC-4944-893E-2005888A9373}</UniqueIdentifier>
     </Filter>
     <Filter Include="Blocks\CodeEditor">
-      <UniqueIdentifier>{70BD1587-3DEA-4E7A-9927-7EF5DE5BC743}</UniqueIdentifier>
+      <UniqueIdentifier>{5A810FB8-AC75-4244-8BC4-0A1BF9C4260F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Blocks\CodeEditor\include">
-      <UniqueIdentifier>{92AB2111-4A31-464A-A540-AEB0B08012CB}</UniqueIdentifier>
+      <UniqueIdentifier>{F7038D16-6314-48BC-B544-12D894F01F1C}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\MultiWindowApp.cpp">
+    <ClCompile Include="..\src\BasicEditorApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\MultiWindowApp.cpp">
+    <ClCompile Include="..\src\BasicEditorApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClInclude Include="..\include\Resources.h">

@@ -27,7 +27,7 @@ public:
     struct Settings {
     public:
         Settings()
-        : mCodeCompletionEnabled( true ), mLineWrappingEnabled( true ), mLineNumbersEnabled( false ), mAutoSaveEnabled( false ), mWindow( ci::app::getWindow() ), mPostDrawConnection( true ),mUpdateConnection( true ), mOpacity( 0.6 ), mFontSize( 11 ), mTheme( "light" )
+        : mCodeCompletionEnabled( true ), mLineWrappingEnabled( true ), mLineNumbersEnabled( false ), mAutoSaveEnabled( false ), mWindow( ci::app::getWindow() ), mPostDrawConnection( true ),mUpdateConnection( true ), mOpacity( 0.6f ), mFontSize( 11 ), mTheme( "light" )
         {}
         
         bool isCodeCompletionEnabled(){ return mCodeCompletionEnabled; }

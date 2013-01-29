@@ -1,4 +1,3 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source Files">
@@ -14,32 +13,26 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
     <Filter Include="Blocks">
-      <UniqueIdentifier>{C1AC92E1-5F19-44C7-958E-CCFBD944242E}</UniqueIdentifier>
+      <UniqueIdentifier>{5638FA3B-C450-4078-9854-C7DE751BE290}</UniqueIdentifier>
     </Filter>
     <Filter Include="Blocks\Awesomium">
-      <UniqueIdentifier>{6DBEE5A3-6824-466D-853A-F08A6371DE38}</UniqueIdentifier>
+      <UniqueIdentifier>{C7D33107-0861-43AD-BB87-94BF75CF7749}</UniqueIdentifier>
     </Filter>
     <Filter Include="Blocks\Awesomium\include">
-      <UniqueIdentifier>{889108D8-555C-45BC-B5A7-708295EA48AE}</UniqueIdentifier>
+      <UniqueIdentifier>{1014F6C3-C7FD-4572-B749-E019C6826CB3}</UniqueIdentifier>
     </Filter>
     <Filter Include="Blocks\CodeEditor">
-      <UniqueIdentifier>{80ED19D2-3697-4EAC-9540-99557752145B}</UniqueIdentifier>
+      <UniqueIdentifier>{25EA1ABF-129B-44D9-B1F9-DD6F16F55791}</UniqueIdentifier>
     </Filter>
     <Filter Include="Blocks\CodeEditor\include">
-      <UniqueIdentifier>{352C7A05-1D77-4B8C-B76B-0BD39026E76C}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Blocks\LiveAssetManager">
-      <UniqueIdentifier>{f8abb61c-3b6c-4a11-af95-1c3466c86f8c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Blocks\LiveAssetManager\src">
-      <UniqueIdentifier>{f75c484f-8f58-4871-85f8-66bb7943e8aa}</UniqueIdentifier>
+      <UniqueIdentifier>{0E389171-CB78-41CE-856A-FD46F0B2149A}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\LiveAssetManagerApp.cpp">
+    <ClCompile Include="..\src\MultiWindowApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\LiveAssetManagerApp.cpp">
+    <ClCompile Include="..\src\MultiWindowApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClInclude Include="..\include\Resources.h">
@@ -54,16 +47,10 @@
     <ClInclude Include="..\..\..\include\CodeEditor.h">
       <Filter>Blocks\CodeEditor\include</Filter>
     </ClInclude>
-    <ClCompile Include="..\..\..\..\Cinder-LiveAssetManager\src\LiveAssetManager.cpp">
-      <Filter>Blocks\LiveAssetManager\src</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Resources.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Cinder-LiveAssetManager\src\LiveAssetManager.h">
-      <Filter>Blocks\LiveAssetManager\src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
