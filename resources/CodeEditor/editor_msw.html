@@ -32,7 +32,7 @@
 
       var wrapper = $(editor.getWrapperElement());
       var scroller = $(editor.getScrollerElement());
-console.log( editor );
+      
       wrapper.css( { "text-shadow" : "none" } );
       wrapper.css( { "opacity" : "0.9999" } );
       
@@ -79,6 +79,18 @@ console.log( editor );
       }
       function setTheme( name ){
         editor.setOption( "theme", "solarized " + name );
+      }
+      function setHeight( height ){
+        if( height == 0.0 ){
+          wrapper.css( { "height" : "auto" } );
+          scroller.css( { "overflow-y" : "hidden" } );
+          scroller.css( { "overflow-x" : "auto" } );
+        }
+        else {
+          wrapper.css( { "height" : height + "px" } );
+          scroller.css( { "overflow-y" : "" } );
+          scroller.css( { "overflow-x" : "" } );          
+        }
       }
 
       var closeDialog = null;
