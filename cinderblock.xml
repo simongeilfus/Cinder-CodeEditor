@@ -25,7 +25,6 @@
 		<buildCopy>resources/CodeEditor/editor_msw.html</buildCopy>
 		<buildCopy>resources/CodeEditor/css/codemirror.css</buildCopy>
 		<buildCopy>resources/CodeEditor/css/dialog.css</buildCopy>
-		<buildCopy>resources/CodeEditor/css/elegant.css</buildCopy>
 		<buildCopy>resources/CodeEditor/css/show-hint.css</buildCopy>
 		<buildCopy>resources/CodeEditor/js/codemirror.js</buildCopy>
 		<buildCopy>resources/CodeEditor/js/dialog.js</buildCopy>
