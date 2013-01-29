@@ -4,6 +4,8 @@ Cinder-CodeEditor
 Full-Featured Code Editor for Cinder.
 (Based on Awesomium and CodeMirror).
 
+The samples have been tested on XCode 4 and VC11 only.
+
 #####Features:
 * Supported Languages: Glsl (XML, JSon and Lua are coming...).
 * Syntax Highlighting.
@@ -19,7 +21,7 @@ Full-Featured Code Editor for Cinder.
 To use this block you will need:
 * The [appRewrite branch](https://forum.libcinder.org/#Topic/23286000001389463)  of Cinder.
 * Paul Houx's [Cinder-Awesomium block](https://github.com/paulhoux/Cinder-Awesomium).
-* Some samples depends on my [LiveAssetManager](https://github.com/simongeilfus/Cinder-LiveAssetManager) block as well, but you don't need it to use the block.
+* Some samples may depend on my [LiveAssetManager](https://github.com/simongeilfus/Cinder-LiveAssetManager) block as well, but you don't need it to use the block.( I removed this sample ... Still need some porting for Windows )
 
 #####Getting Started
 
@@ -123,7 +125,7 @@ There's an Auto-Save feature that you can set in your settings, if you want your
 
 `` | ``
 ----|------
-`Cmd-S`                             | Save
+`Ctrl-S` / `Cmd-S`                   | Save
 `~` | Toggle editor visibility
 `Ctrl-Space` | Code Completion
 `Shift-Tab` | Switch tab
@@ -132,7 +134,7 @@ There's an Auto-Save feature that you can set in your settings, if you want your
 `Shift-Ctrl-G / Shift-Cmd-G`        | Find previous
 `Shift-Ctrl-F / Cmd-Option-F`       | Replace
 `Shift-Ctrl-R / Shift-Cmd-Option-F` | Replace all
-`Cmd-T`                             | Switch betweem light and dark theme
+`Ctrl-T` / `Cmd-T`                  | Switch betweem light and dark theme
 
 
 #####CodeMirror
