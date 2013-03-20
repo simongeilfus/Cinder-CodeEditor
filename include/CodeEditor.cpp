@@ -338,14 +338,16 @@ void CodeEditor::keyDown( ci::app::KeyEvent event )
         }
         if( it == mTabs.end() ) it = mTabs.begin();
         mCurrentTab = *it;
-        //mCurrentTab->mWebView->Focus();
+        mCurrentTab->mWebView->Focus();
         ( (Awesomium::BitmapSurface*) mCurrentTab->mWebView->surface() )->set_is_dirty( true );
+        update();
                 
         Awesomium::JSArray args;
         args.Push( Awesomium::JSValue( Awesomium::WSLit( mCurrentTab->mFileName.string().c_str() ) ) );
         
         Awesomium::JSObject& window = mCurrentTab->mJSWindow;
         window.Invoke( Awesomium::WSLit("setTitleDialog"), args );
+        window.Invoke( Awesomium::WSLit("setFocus"), Awesomium::JSArray() );
         app::timeline().add( [window]() mutable {
                 window.Invoke( Awesomium::WSLit("clearTitleDialog"), Awesomium::JSArray() );
         }, app::timeline().getCurrentTime() + 1.0f );

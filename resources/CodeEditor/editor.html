@@ -35,7 +35,6 @@
 
       wrapper.css( { "text-shadow" : "none" } );
       wrapper.css( { "opacity" : "0.9999" } );
-
       
       var hlLine = editor.addLineClass(0, "background", "activeline");
 
@@ -92,6 +91,9 @@
           scroller.css( { "overflow-y" : "" } );
           scroller.css( { "overflow-x" : "" } );          
         }
+      }
+      function setFocus(){
+        editor.focus();
       }
 
       var closeDialog = null;
