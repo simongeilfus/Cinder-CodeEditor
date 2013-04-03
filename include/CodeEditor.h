@@ -176,6 +176,8 @@ protected:
         void        setValue( const std::string &value );
         std::string getValue();
         
+        void        setMode( const std::string &value );
+        
         void OnBeginLoadingFrame(Awesomium::WebView* caller,int64 frame_id,bool is_main_frame,const Awesomium::WebURL& url,bool is_error_page) {}
         void OnFailLoadingFrame(Awesomium::WebView* caller,int64 frame_id,bool is_main_frame,const Awesomium::WebURL& url,int error_code,const Awesomium::WebString& error_desc) {}
         void OnFinishLoadingFrame(Awesomium::WebView* caller,int64 frame_id,bool is_main_frame,const Awesomium::WebURL& url) {}
@@ -194,6 +196,8 @@ protected:
         std::function<void(const std::string&,
                            const std::string&)> mPairChangeCallback;
         bool                                    mPairIsFirst;
+        
+        std::string                             mMode;
         
         friend class CodeEditor;
     };

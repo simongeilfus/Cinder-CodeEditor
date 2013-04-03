@@ -441,6 +441,12 @@ std::string CodeEditor::Tab::getValue()
     return "";
 }
 
+void CodeEditor::Tab::setMode( const std::string &value )
+{
+    Awesomium::JSArray args;
+    args.Push( Awesomium::JSValue( Awesomium::WSLit( value.c_str() ) ) );
+    mJSWindow.Invoke( Awesomium::WSLit("setMode"), args );
+}
 void CodeEditor::autoComplete()
 {
     if( mCurrentTab )
@@ -572,6 +578,9 @@ void CodeEditor::Tab::OnDocumentReady(Awesomium::WebView* caller, const Awesomiu
         mJSWindow = window.ToObject();
         mJSWindow.SetCustomMethod( Awesomium::WSLit("changeCallback"), false );
         read( mFilePath );
+        
+        if( mFilePath.extension() == ".lua" )
+            setMode( "lua" );
         
         mParent->mTabsReady++;
         

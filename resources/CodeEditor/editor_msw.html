@@ -9,6 +9,7 @@
     <script src="jquery.min.js"></script>
     <script src="jquery.color.js"></script>
     <script src="codemirror.js"></script>
+    <script src="js/lua.js"></script>
     <script src="glsl.js"></script>
     <script src="search.js"></script>
     <script src="searchcursor.js"></script>
@@ -79,6 +80,9 @@
       }
       function setTheme( name ){
         editor.setOption( "theme", "solarized " + name );
+      }
+      function setMode( name ){
+        editor.setOption( "mode", "text/x-" + name );
       }
       function setHeight( height ){
         if( height == 0.0 ){
