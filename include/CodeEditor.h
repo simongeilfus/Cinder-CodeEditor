@@ -27,7 +27,7 @@ public:
     struct Settings {
     public:
         Settings()
-        : mCodeCompletionEnabled( true ), mLineWrappingEnabled( true ), mLineNumbersEnabled( false ), mAutoSaveEnabled( false ), mWindow( ci::app::getWindow() ), mPostDrawConnection( true ),mUpdateConnection( true ), mOpacity( 0.6f ), mFontSize( 11 ), mTheme( "light" ), mHeight( 0.0f )
+        : mCodeCompletionEnabled( true ), mLineWrappingEnabled( true ), mLineNumbersEnabled( false ), mAutoSaveEnabled( false ), mWindow( ci::app::getWindow() ), mPostDrawConnection( true ),mUpdateConnection( true ), mOpacity( 0.6f ), mFontSize( 11 ), mTheme( "light" ), mHeight( 0.0f ), mMode( "glsl" )
         {}
         
         bool isCodeCompletionEnabled(){ return mCodeCompletionEnabled; }
@@ -76,6 +76,11 @@ public:
         void setTheme( const std::string& name ){ mTheme = name; }
         Settings& theme( const std::string& name ){ setTheme( name ); return *this; }
         
+        
+        std::string getMode(){ return mMode; }
+        void setMode( const std::string& name ){ mMode = name; }
+        Settings& mode( const std::string& name ){ setMode( name ); return *this; }
+        
         float getHeight(){ return mHeight; }
         void setHeight( float height ){ mHeight = height; }
         Settings& height( float height ){ setHeight( height ); return *this; }
@@ -91,6 +96,7 @@ public:
         int                 mFontSize;
         float               mHeight;
         std::string         mTheme;
+        std::string         mMode;
         ci::app::WindowRef  mWindow;
     };
     
@@ -138,6 +144,7 @@ public:
     void setOpacity( float alpha );
     void setFontSize( int size );
     void setTheme( const std::string& name );
+    void setMode( const std::string& name );
     void setHeight( float height );
     
     void setError( /*uint16_t line, */const std::string &message );

@@ -140,6 +140,7 @@ void CodeEditor::setup()
     setTheme( mSettings.getTheme() );
     setOpacity( mSettings.getOpacity() );
     setHeight( mSettings.getHeight() );
+    setMode( mSettings.getMode() );
 }
 void CodeEditor::connectWindow( app::WindowRef window )
 {
@@ -503,6 +504,16 @@ void CodeEditor::setTheme( const std::string& name )
         tab->mJSWindow.Invoke( Awesomium::WSLit("setTheme"), args );
     }
     setOpacity( mSettings.getOpacity() );
+}
+void CodeEditor::setMode( const std::string& name )
+{
+    mSettings.setMode( name );
+    Awesomium::JSArray args;
+    args.Push( Awesomium::JSValue( Awesomium::WSLit( name.c_str() ) ) );
+    for( vector<TabRef>::iterator it = mTabs.begin(); it != mTabs.end(); ++it ){
+        TabRef tab = *it;
+        tab->mJSWindow.Invoke( Awesomium::WSLit("setMode"), args );
+    }
 }
 void CodeEditor::setHeight( float height )
 {
